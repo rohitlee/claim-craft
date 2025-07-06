@@ -2,6 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Gender } from '../types';
 import { logout } from '../services/AuthService';
 
+import logo from '../assets/logo.png';
+import manSvg from '../assets/man.svg';
+import womanSvg from '../assets/woman.svg';
+
 interface HeaderProps {
     onHomeClick: () => void;
     onProfileClick: () => void;
@@ -10,7 +14,7 @@ interface HeaderProps {
 }
 
 const UserIcon: React.FC<{ gender: Gender | null }> = ({ gender }) => {
-  const iconSrc = gender === 'woman' ? '/assets/woman.svg' : '/assets/man.svg';
+  const iconSrc = gender === 'woman' ? womanSvg : manSvg;
   return <img src={iconSrc} alt="User" className="h-8 w-8 rounded-full" />;
 };
 
@@ -37,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onProfileClick, onProgress
           role="button"
           aria-label="Go to homepage"
         >
-          <img src="assets/logo.png" alt="Patent Claim Drafter AI" className="h-8" />
+          <img src={logo} alt="Patent Claim Drafter AI" className="h-8" />
         </div>
         <div className="relative" ref={dropdownRef}>
           <button 
