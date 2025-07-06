@@ -50,12 +50,13 @@ const PracticeView: React.FC<PracticeViewProps> = ({ question, onSubmit }) => {
           </div>
         </div>
         <div className="mt-4">
-          <button
-            onClick={() => setShowImage(!showImage)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-semibold"
-          >
-            {showImage ? 'Hide Figure' : 'View Figure'}
-          </button>
+          {(question.imageUrls && question.imageUrls.length > 0) && (
+            <button
+              onClick={() => setShowImage(!showImage)}
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-semibold">
+              {showImage ? 'Hide Figure' : 'View Figure'}
+            </button>
+          )}
         </div>
         {showImage && question.imageUrls && question.imageUrls.length > 0 && (
           <div className="mt-4">
